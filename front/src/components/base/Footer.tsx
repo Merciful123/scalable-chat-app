@@ -1,11 +1,10 @@
-import React from "react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   return (
-    <footer className="p-6 bg-gray-900 text-white">
+    <footer className="p-6 bg-gray-900 text-white lg:px-10">
       <div className="flex justify-between">
         <div>
           <div>© 2024 QuickChat. All rights reserved.</div>
@@ -19,7 +18,7 @@ export default function Footer() {
             placeholder="Subscribe to our newsletter"
             className="bg-gray-800 border-none"
           />
-          <Button>Subscribe</Button>
+          <Button className="cursor-pointer">Subscribe</Button>
         </div>
       </div>
     </footer>

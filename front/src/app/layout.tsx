@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "../lib/utils";
-
+import SessionProviders from "@/providers/SessionProviders";
 
 const fontSans = FontSans({
-  variable: "--font-sans"
-})
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "QuickChat",
@@ -20,6 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <SessionProviders>
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
@@ -28,6 +29,7 @@ export default function RootLayout({
         >
           {children}
         </body>
+      </SessionProviders>
     </html>
   );
 }
