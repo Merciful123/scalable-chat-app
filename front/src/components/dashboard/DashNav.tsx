@@ -1,4 +1,3 @@
-import React from 'react'
 import ProfileMenu from '../auth/ProfileMenu'
 
 const DashNav = ({name, image}:{name:string, image?: string}) => {
@@ -12,4 +11,4 @@ const DashNav = ({name, image}:{name:string, image?: string}) => {
   )
 }
  
-export default DashNav
+export default DashNav;
