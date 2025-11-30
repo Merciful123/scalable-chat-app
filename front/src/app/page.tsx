@@ -13,7 +13,7 @@ export default async function Home() {
      <div className="min-h-screen flex flex-col ">
       {/* Header */}
       <Navbar  user={session?.user}/>
-      {/* Hero Section */}
+      {/* Hero Section */  }
       <HeroSection />
 
       {/* Features Section */}

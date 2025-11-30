@@ -23,7 +23,7 @@ export async function fetchChatGroups(token: string) {
 }
 
 export async function fetchChatGroup(id: string) {
-  const res = await fetch(`${CHAT_GROUP}/${id}`, {
+  const res = await fetch(`${CHAT_GROUP}/${encodeURIComponent(id)}`, {
     cache: "no-cache",
   });
 

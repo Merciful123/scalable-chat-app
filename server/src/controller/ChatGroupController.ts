@@ -5,6 +5,7 @@ class ChatGroupController {
   static async index(req: Request, res: Response) {
     try {
       const user = req.user;
+      console.log("secon")
       const groups = await prisma.chatGroup.findMany({
         where: {
           user_id: user?.id,
@@ -47,8 +48,8 @@ class ChatGroupController {
       const user = req.user;
       await prisma.chatGroup.create({
         data: {
-          title: body?.title,
-          passcode: body?.passcode,
+          title: body.title,
+          passcode: body.passcode,
           user_id: user?.id!,
         },
       });
@@ -69,7 +70,7 @@ static async update(req: Request, res: Response) {
       data: {
         title,
         passcode,
-        // ❌ NEVER EVER set user_id here
+        //  NEVER EVER set user_id here
       },
       where: { id },
     });

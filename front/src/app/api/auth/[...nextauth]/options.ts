@@ -30,16 +30,16 @@ export const authOptions: AuthOptions = {
       console.log("The account is", account);
       
       const payload = {
-        email: user.email!,
-        name: user.name!,
-        oauth_id: account?.providerAccountId,
-        provider: account?.provider,
-        image: user?.image
+        email: user.email,
+        name: user.name,
+        oauth_id: account!.providerAccountId,
+        provider: account!.provider,
+        image: user.image
       }
 
       const {data} = await axios.post(LOGIN_URL, payload);
-      user.id = data?.user?.id.toString();
-      user.token = data?.user?.token;
+      user.id = data.user.id.toString();
+      user.token = data.user.token;
       return true;
      
       } catch (error) {

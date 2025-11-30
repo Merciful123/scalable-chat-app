@@ -1,4 +1,4 @@
-type GroupChatType = {
+export type GroupChatType = {
   id: string;
   user_id: number;
   title: string;
@@ -6,7 +6,7 @@ type GroupChatType = {
   created_at: string;
 };
 
-type GroupChatUserType = {
+export type GroupChatUserType = {
   id: number;
   name: string;
   group_id: string;
@@ -14,7 +14,7 @@ type GroupChatUserType = {
   isOnline?: boolean;
 };
 
-type MessageType = {
+export type MessageType = {
   id: string;
   message: string;
   group_id: string;
