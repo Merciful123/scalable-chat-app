@@ -3,8 +3,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 export default function Footer() {
+
   return (
-    <footer className="p-6 bg-gray-900 text-white lg:px-10">
+  
+  <footer className="p-6 bg-gray-900 text-white lg:px-10">
       <div className="flex justify-between">
         <div>
           <div>© 2024 QuickChat. All rights reserved.</div>
@@ -21,6 +23,6 @@ export default function Footer() {
           <Button className="cursor-pointer">Subscribe</Button>
         </div>
       </div>
-    </footer>
+  </footer>
   );
 }

@@ -14,7 +14,9 @@ interface LoginPayloadType {
 }
 
 export default class AuthController {
+
     static async login(request: Request, response: Response){
+
         try {
             const body: LoginPayloadType = request.body;
             let findUser = await prisma.user.findUnique({
@@ -37,6 +39,7 @@ export default class AuthController {
             const token = jwt.sign(JWTPayload, process.env.JWT_SECRET, {
                 expiresIn: "355d"
             })
+
             return response.json({
                 message: "logged in successfully!",
                 user:{
@@ -44,7 +47,9 @@ export default class AuthController {
                     token: `Bearer ${token}`
                 }
             })
+
         } catch (error) {
+            
             return response.status(500).json({message: "something went wrong, please try again!"})
         }
     }

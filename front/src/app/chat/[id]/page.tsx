@@ -6,18 +6,21 @@ import { notFound } from 'next/navigation';
 
 
 export default async function chat ({params}:{params:{id: string}}) {
-    // console.log("The group id is", params?.id)
+  
   const { id } = await params;   
-  console.log(id)
+
   if (id.length !== 36) {
     return notFound();
   }
+
   const group: GroupChatType | null = await fetchChatGroup(id);
+  
   if (group === null) {
     return notFound();
   } 
 
   const users: Array<GroupChatUserType> | [] =
+  
     await fetchChatGroupUsers(id);
   
     const chats: Array<MessageType> | [] = await fetchChats(id);

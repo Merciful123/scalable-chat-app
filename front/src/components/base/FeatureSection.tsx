@@ -1,7 +1,8 @@
-import React from "react";
 import FeatureCard from "./FeatureCard";
 
+
 export default function FeatureSection() {
+
   return (
     <section
       id="features"

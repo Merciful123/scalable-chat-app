@@ -1,10 +1,12 @@
 import { GroupChatUserType } from "@/types";
 
+
 export default function ChatSidebar({
   users,
 }: {
   users: Array<GroupChatUserType> | [];
 }) {
+
   return (
     <div className="hidden md:block h-screen overflow-y-scroll w-1/5 bg-muted px-2">
       <h1 className="text-2xl font-extrabold py-4 ">Users</h1>

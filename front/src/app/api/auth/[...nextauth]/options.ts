@@ -20,14 +20,16 @@ export interface CustomUser {
 }
 
 export const authOptions: AuthOptions = {
+
   pages: {
     signIn: "/",
   },
+  
   callbacks: {
+  
     async signIn({ user, account }:{user: CustomUser, account: Account|null }) {
      try {
-      console.log("The user data is", user);
-      console.log("The account is", account);
+      
       
       const payload = {
         email: user.email,
@@ -51,6 +53,7 @@ export const authOptions: AuthOptions = {
         );
      }
     },
+  
     async session({ session, user, token } : {session: CustomSession, user: CustomUser, token: JWT}) {
       session.user = token.user as CustomUser
       return session;

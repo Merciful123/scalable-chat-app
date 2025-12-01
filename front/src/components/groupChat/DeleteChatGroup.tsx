@@ -14,6 +14,7 @@ import { CHAT_GROUP } from "@/lib/apiEndPoints";
 import { toast } from "sonner";
 import { clearCache } from "@/actions/common";
 
+
 export default function DeleteChatGroup({
   open,
   setOpen,
@@ -25,21 +26,30 @@ export default function DeleteChatGroup({
   groupId: string;
   token: string;
 }) {
+
+
   const [loading, setLoading] = useState(false);
+
+
   const deleteChatGroup = async () => {
+
     setLoading(true);
+
     try {
       const { data } = await axios.delete(`${CHAT_GROUP}/${groupId}`, {
         headers: {
           Authorization: token,
         },
       });
+
       if (data?.message) {
         clearCache("dashboard");
         toast.success(data?.message);
         setOpen(false);
       }
+
       setLoading(false);
+
     } catch (error) {
       setLoading(false);
       toast.error("Somethign went wrong.please try again later.");

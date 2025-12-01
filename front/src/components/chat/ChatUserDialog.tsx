@@ -15,6 +15,7 @@ import { CHAT_GROUP_USERS } from "@/lib/apiEndPoints";
 import { toast } from "sonner";
 import { GroupChatType } from "@/types";
 
+
 export default function ChatUserDialog({
   open,
   setOpen,
@@ -24,7 +25,10 @@ export default function ChatUserDialog({
   setOpen: Dispatch<SetStateAction<boolean>>;
   group: GroupChatType;
 }) {
+
+  
   const params = useParams();
+  
   const [state, setState] = useState({
     name: "",
     passcode: "",
@@ -40,9 +44,13 @@ export default function ChatUserDialog({
     }
   }, []);
 
+
   const handleSubmit = async (event: React.FormEvent) => {
+
     event.preventDefault();
+
     const localData = localStorage.getItem(params["id"] as string);
+    
     if (!localData) {
       try {
         const { data } = await axios.post(CHAT_GROUP_USERS, {

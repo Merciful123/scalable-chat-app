@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const Notfound = () => {
+  
   return (
     <div className='h-screen flex flex-col justify-center items-center'>
         <Image

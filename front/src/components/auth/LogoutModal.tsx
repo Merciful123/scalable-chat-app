@@ -19,12 +19,14 @@ export default function LogoutModal({
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
 }) {
+
   const handleLogout = () => {
     signOut({
       callbackUrl: "/",
       redirect: true,
     });
   };
+  
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogContent>

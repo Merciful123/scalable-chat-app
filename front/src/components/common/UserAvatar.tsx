@@ -8,6 +8,7 @@ export default function UserAvatar({
   image?: string;
 }) {
   return (
+    
     <Avatar>
       <AvatarImage src={image} />
       <AvatarFallback>{name[0]}</AvatarFallback>

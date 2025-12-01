@@ -10,19 +10,27 @@ export default async function Home() {
   const session:CustomSession | null = await getServerSession(authOptions)
   
   return (
-     <div className="min-h-screen flex flex-col ">
+   
+   <div className="min-h-screen flex flex-col ">
+   
       {/* Header */}
+   
       <Navbar  user={session?.user}/>
+   
       {/* Hero Section */  }
+   
       <HeroSection />
 
       {/* Features Section */}
+   
       <FeatureSection />
 
       {/* User Reviews Section */}
+   
       <UserReviews />
 
       {/* Footer */}
+   
       <Footer />
     </div>
   );

@@ -15,9 +15,13 @@ export default function ChatBase({
   users: Array<GroupChatUserType> | [];
   oldMessages: Array<MessageType> | [];
 }) {
+
   const [open, setOpen] = useState(true);
+  
   const [chatUser, setChatUser] = useState<GroupChatUserType>();
+  
   useEffect(() => {
+  
     const data = localStorage.getItem(group.id);
     if (data) {
       const pData = JSON.parse(data);
@@ -25,6 +29,7 @@ export default function ChatBase({
       setChatUser(pData);
     }
   }, [group.id]);
+ 
   return (
     <div className="flex">
       <ChatSidebar users={users} />

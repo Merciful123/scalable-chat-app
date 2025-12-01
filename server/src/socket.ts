@@ -25,10 +25,8 @@ export function setupSocket(io: Server) {
 
     socket.join(socket?.room!);
 
-    console.log("The socket connected", socket.id);
 
     socket.on("message", async (data)=>{
-      console.log("server side message", data);
      
       // await prisma.chats.create({
       //   data: data

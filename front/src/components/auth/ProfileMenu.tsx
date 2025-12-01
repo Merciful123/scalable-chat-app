@@ -12,6 +12,7 @@ import dynamic from "next/dynamic";
 import UserAvatar from "../common/UserAvatar";
 const LogoutModal = dynamic(() => import("../auth/LogoutModal"));
 
+
 export default function ProfileMenu({
   image,
   name,
@@ -19,7 +20,9 @@ export default function ProfileMenu({
   image?: string;
   name: string;
 }) {
+
   const [logoutOpen, setLogoutOpen] = useState(false);
+
   return (
     <>
       {logoutOpen && <LogoutModal open={logoutOpen} setOpen={setLogoutOpen} />}

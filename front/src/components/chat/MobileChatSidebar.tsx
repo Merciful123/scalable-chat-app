@@ -9,11 +9,13 @@ import {
 import { GroupChatUserType } from "@/types";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
+
 export default function MobileChatSidebar({
   users,
 }: {
   users: Array<GroupChatUserType> | [];
 }) {
+
   return (
     <Sheet>
       <SheetTrigger asChild>

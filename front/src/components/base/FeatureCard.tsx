@@ -1,4 +1,3 @@
-import React from "react";
 import { Card } from "@/components/ui/card";
 
 export default function FeatureCard({
@@ -10,6 +9,7 @@ export default function FeatureCard({
   title: string;
   description: string;
 }) {
+  
   return (
     <Card className="p-6 bg-card">
       <div className="text-3xl mb-4">{icon}</div>

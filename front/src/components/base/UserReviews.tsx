@@ -1,6 +1,9 @@
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
+
+
 export default function UserReviews() {
+
   return (
     <section className="p-12 bg-gray-50">
       <h2 className="text-3xl font-bold text-center mb-8">

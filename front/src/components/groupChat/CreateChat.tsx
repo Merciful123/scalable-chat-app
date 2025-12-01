@@ -1,7 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-
 import {
   Dialog,
   DialogContent,
@@ -23,6 +22,7 @@ import { toast } from "sonner";
 import { clearCache } from "@/actions/common";
 
 export default function CreateChat({ user }: { user: CustomUser }) {
+
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -33,8 +33,9 @@ export default function CreateChat({ user }: { user: CustomUser }) {
   } = useForm<createChatSchemaType>({
     resolver: zodResolver(createChatSchema),
   });
+
   const onSubmit = async (payload: createChatSchemaType) => {
-    // console.log("The payload is", payload);
+
     try {
       setLoading(true);
       const { data } = await axios.post(CHAT_GROUP, {...payload, user_id: user.id}, {
@@ -49,7 +50,9 @@ export default function CreateChat({ user }: { user: CustomUser }) {
         toast.success(data?.message);
         clearCache("dashboard");
       }
+
       setLoading(false);
+    
     } catch (error) {
       setLoading(false);
       if (error instanceof AxiosError) {

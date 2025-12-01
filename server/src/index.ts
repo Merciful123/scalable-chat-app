@@ -48,9 +48,8 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api", Routes);
 
-console.log(process.env.KAFKA_USERNAME);
 
-
+// added kafka from here
 
 connectKafkaProducer().catch((err) => console.log("Kafka Consumer error", err));
 

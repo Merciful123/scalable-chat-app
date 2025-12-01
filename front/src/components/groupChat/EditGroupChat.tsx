@@ -20,6 +20,7 @@ import axios, { AxiosError } from "axios";
 import { CHAT_GROUP } from "@/lib/apiEndPoints";
 import { toast } from "sonner";
 import { clearCache } from "@/actions/common";
+import { GroupChatType } from "@/types";
 
 export default function EditGroupChat({
   user,
@@ -49,7 +50,7 @@ export default function EditGroupChat({
   }, [group]);
 
   const onSubmit = async (payload: createChatSchemaType) => {
-    // console.log("The payload is", payload);
+
     try {
       setLoading(true);
       const { data } = await axios.put(`${CHAT_GROUP}/${group.id}`, payload, {

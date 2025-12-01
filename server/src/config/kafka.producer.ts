@@ -3,7 +3,7 @@ import env from "dotenv";
 env.config();
 
 
-const redpanda = new Kafka({
+const kafka = new Kafka({
   brokers: [process.env.KAFKA_BROKER!],
   ssl: true,
   sasl: {
@@ -15,9 +15,9 @@ const redpanda = new Kafka({
 
 })
 
-export const producer = redpanda.producer();
+export const producer = kafka.producer();
 
-export const consumer = redpanda.consumer({groupId: process.env.KAFKA_TOPIC!});
+export const consumer = kafka.consumer({groupId: process.env.KAFKA_TOPIC!});
 
 
 export const connectKafkaProducer = async () => {

@@ -6,9 +6,12 @@ import GroupChatCard from "@/components/groupChat/GroupChatCard";
 import { fetchChatGroups } from "../fetch/groupFetch";
 import { GroupChatType } from "@/types";
 
+
 const Dashboard = async () => {
+
   const session: CustomSession | null = await getServerSession(authOptions);
-   const groups: Array<GroupChatType> | [] = await fetchChatGroups(
+  
+  const groups: Array<GroupChatType> | [] = await fetchChatGroups(
     session!.user!.token!
   );
   

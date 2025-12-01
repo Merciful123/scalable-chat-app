@@ -8,12 +8,14 @@ export const produceMessage = async (topic: string, message: any) => {
   });
 };
 
-export const consumeMessages = async (topic: string) => {
-  await consumer.connect();
-  await consumer.subscribe({ topic: topic });
 
-  await consumer.run({
-    eachMessage: async ({ topic, partition, message }) => {
+export const consumeMessages = async (topic: string) => {
+ 
+    await consumer.connect();
+
+    await consumer.subscribe({ topic: topic });
+
+  await consumer.run({ eachMessage: async ({ topic, partition, message }) => {
       const data = JSON.parse(message?.value?.toString() ?? "");
       console.log({
         partition,

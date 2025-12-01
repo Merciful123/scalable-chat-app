@@ -31,7 +31,6 @@ export default function Chats({
 
   useEffect(() => {
     socket.on("message", (data: MessageType) => {
-      console.log("The message is", data);
       setMessages((prevMessages) => [...prevMessages, data]);
       scrollToBottom();
     });
@@ -80,7 +79,7 @@ export default function Chats({
           type="text"
           placeholder="Type a message..."
           value={message}
-          className="flex-1 p-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 p-2 border border-gray-500 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(e) => setMessage(e.target.value)}
         />
       </form>

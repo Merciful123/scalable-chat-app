@@ -11,6 +11,7 @@ export default function ChatNav({
   users: Array<GroupChatUserType> | [];
   user?: GroupChatUserType;
 }) {
+  
   return (
     <nav className="w-full flex justify-between items-center  px-6 py-2 border-b">
       <div className="flex space-x-4 md:space-x-0 items-center">
