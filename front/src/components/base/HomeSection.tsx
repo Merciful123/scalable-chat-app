@@ -13,9 +13,16 @@ export default function HeroSection() {
         conversations in seconds.
       </p>
       <Link href="/dashboard">
-        <Button size="lg" className="animate-pulse">
-          Start Chatting
-        </Button>
+        <div className="chrome-ai-glow rounded-full">
+          <div className="gradient-and-mask-wrapper">
+            <div className="outer-glow"></div>
+            <div className="rotating-gradient"></div>
+            <div className="rotating-mask"></div>
+          </div>
+          <Button size="lg" className="relative z-10 ">
+            Start Chatting
+          </Button>
+        </div>
       </Link>
 
       <div className="mt-12 w-full max-w-5xl flex justify-center">

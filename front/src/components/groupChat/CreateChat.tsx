@@ -63,7 +63,7 @@ export default function CreateChat({ user }: { user: CustomUser }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button>Create Chat</Button>
+        <Button className="cursor-pointer mb-2">Create Chat</Button>
       </DialogTrigger>
       <DialogContent onInteractOutside={(e) => e.preventDefault()}>
         <DialogHeader>

@@ -11,6 +11,8 @@ import { setupSocket } from "./socket.js";
 import { createAdapter } from "@socket.io/redis-streams-adapter";
 import redis from "./config/redis.config.js";
 import { instrument } from "@socket.io/admin-ui";
+import { consumeMessages } from "./config/kafka.consumer.js";
+import { connectKafkaProducer } from "./config/kafka.producer.js";
 
 
 
@@ -46,6 +48,14 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api", Routes);
 
+console.log(process.env.KAFKA_USERNAME);
+
+
+
+connectKafkaProducer().catch((err) => console.log("Kafka Consumer error", err));
+
+consumeMessages("quick-chat-messages").catch((err) => console.log("The Kafka Consume error", err)
+);
 
 server.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
 

@@ -16,9 +16,9 @@ const Dashboard = async () => {
     <div>
       <DashNav
         name={session!.user!.name!}
-        image={session?.user?.image ?? undefined}
+        image={session!.user!.image!}
       />
-      <div className="container">
+      <div className="container m-auto w-[95%]">
         <div className="flex justify-end mt-10">
           <CreateChat user={session!.user!} />
         </div>

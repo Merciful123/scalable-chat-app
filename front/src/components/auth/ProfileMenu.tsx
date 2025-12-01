@@ -23,11 +23,11 @@ export default function ProfileMenu({
   return (
     <>
       {logoutOpen && <LogoutModal open={logoutOpen} setOpen={setLogoutOpen} />}
-      <DropdownMenu>
-        <DropdownMenuTrigger>
+      <DropdownMenu >
+        <DropdownMenuTrigger className="cursor-pointer *:cursor-pointer">
           <UserAvatar name={name} image={image} />
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className="cursor-pointer *:cursor-pointer">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>Profile</DropdownMenuItem>
