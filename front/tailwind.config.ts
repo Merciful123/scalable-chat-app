@@ -5,7 +5,7 @@ import tailwindcssAnimate from "tailwindcss-animate";
 
 
 const config = {
-  darkMode: ["class"],
+  darkMode: "class",
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -77,7 +77,8 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily : {
-        sans:[ "var(--font-sans)", ...fontFamily.sans]
+        //@ts-expect-error
+        sans:[ "var(--font-sans)", ...fontFamily.san]
       }
     },
 
