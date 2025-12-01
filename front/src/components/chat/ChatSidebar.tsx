@@ -8,7 +8,7 @@ export default function ChatSidebar({
 }) {
 
   return (
-    <div className="hidden md:block h-screen overflow-y-scroll w-1/5 bg-muted px-2">
+    <div className="hidden md:block h-screen overflow-y-auto w-1/5  px-2 bg-sky-100!">
       <h1 className="text-2xl font-extrabold py-4 ">Users</h1>
       {users.length > 0 &&
         users.map((item, index) => (
