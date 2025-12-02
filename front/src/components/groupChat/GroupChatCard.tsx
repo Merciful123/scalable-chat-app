@@ -20,10 +20,10 @@ export default function GroupChatCard({
         </div>
       </CardHeader>
       <CardContent>
-        <p>
+        <p className="text-sm">
           Passcode :-<strong>{group.passcode}</strong>
         </p>
-        <p>Created At :-{new Date(group.created_at).toDateString()}</p>
+        <p className="text-sm">Created at :-{new Date(group.created_at).toDateString()}</p>
       </CardContent>
     </Card>
   );

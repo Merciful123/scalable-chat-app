@@ -73,7 +73,7 @@ export default function ChatUserDialog({
   };
 
   return (
-    <Dialog open={open}>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Add Name and Passcode</DialogTitle>
@@ -97,7 +97,7 @@ export default function ChatUserDialog({
             />
           </div>
           <div className="mt-2">
-            <Button className="w-full">Submit</Button>
+            <Button className="w-full cursor-pointer">Submit</Button>
           </div>
         </form>
       </DialogContent>

@@ -21,7 +21,7 @@ export default function HeroSection() {
             <div className="rotating-gradient"></div>
             <div className="rotating-mask"></div>
           </div>
-          <Button size="lg" className="relative z-10 ">
+          <Button size="lg" className="relative z-10 cursor-pointer">
             Start Chatting
           </Button>
         </div>
@@ -35,6 +35,7 @@ export default function HeroSection() {
           className="w-full h-auto"
           width={1}
           height={1}
+          loading="eager"
         />
       </div>
     </section>

@@ -14,6 +14,7 @@ import { toast } from "sonner";
 import Env from "@/lib/env";
 import { GroupChatType } from "@/types";
 
+
 const DeleteChatGroup = dynamic(() => import("./DeleteChatGroup"));
 
 export default function GroupChatCardMenu({
@@ -29,9 +30,18 @@ export default function GroupChatCardMenu({
 
   const [editDialoag, setEditDialog] = useState(false);
 
+   const handleOpen = () => {
+    const url = `${Env.APP_URL}/chat/${group.id}`;
+    window.open(url, '_blank');
+
+  };
+
   const handleCopy = () => {
-    navigator.clipboard?.writeText(`${Env.APP_URL}/chat/${group.id}`);
+    const url = `${Env.APP_URL}/chat/${group.id}`;
+
+    navigator.clipboard?.writeText(url);
     toast.success("Link copied successfully!");
+
   };
 
 
@@ -63,6 +73,7 @@ export default function GroupChatCardMenu({
           <DotsVerticalIcon className="h-5 w-5" />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="cursor-pointer *:cursor-pointer">
+          <DropdownMenuItem onClick={handleOpen}>Open</DropdownMenuItem>
           <DropdownMenuItem onClick={handleCopy}>Copy</DropdownMenuItem>
           <DropdownMenuItem onClick={() => setEditDialog(true)}>
             Edit

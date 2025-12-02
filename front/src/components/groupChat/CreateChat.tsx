@@ -82,7 +82,7 @@ export default function CreateChat({ user }: { user: CustomUser }) {
             <span className="text-red-400">{errors.passcode?.message}</span>
           </div>
           <div className="mt-4">
-            <Button className="w-full" disabled={loading}>
+            <Button className="w-full  cursor-pointer" disabled={loading}  >
               {loading ? "Processing.." : "Submit"}
             </Button>
           </div>

@@ -25,7 +25,7 @@ export const LoginModal = () => {
     <Dialog>
       <form>
         <DialogTrigger asChild>
-          <Button variant="outline">Getting Started</Button>
+          <Button variant="outline"  className="cursor-pointer">Getting Started</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -41,6 +41,7 @@ export const LoginModal = () => {
               width="25"
               height={"25"}
               alt="google_logo"
+              className="cursor-pointer"
             />
             Continue with Google
           </Button>

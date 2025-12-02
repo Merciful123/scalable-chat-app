@@ -17,7 +17,7 @@ export default function Navbar({user}:{user?: CustomUser}) {
         {!user ? (
           <LoginModal />
         ) : (
-          <Link href="/dashboard">
+          <Link href="/dashboard"  className="cursor-pointer">
             <Button>Dashboard</Button>
           </Link>
         )}

@@ -11,7 +11,7 @@ const Notfound = () => {
         src={"/images/404.svg"}
         width={500} height={500} alt='404'
         />
-        <Link href={"/"}>
+        <Link href={"/"}  className="cursor-pointer">
             <Button>Back To Home</Button>
         </Link>
     </div>
