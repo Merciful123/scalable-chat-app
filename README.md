@@ -1,7 +1,3 @@
-Here’s a clean, short, developer-friendly README for your scalable chat app:
-
----
-
 # **Scalable Chat App**
 
 A real-time, scalable chat application built using **Next.js**, **Node.js (Express)**, **Socket.IO**, **Kafka**, **Redis Streams**, and **Google OAuth**.
