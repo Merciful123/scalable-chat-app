@@ -20,7 +20,7 @@ const server = createServer(app);
 
 const io = new Server(server,{
   cors:{
-    origin: ["http://localhost:3000", "https://admin.socket.io", "https://scalable-chat-app-1-hm6l.onrender.com" ],
+    origin: ["http://localhost:3000", "https://admin.socket.io", "https://scalable-chat-app-1-dqxx.onrender.com" ],
     credentials: true
   },         
   adapter: createAdapter(redis)
