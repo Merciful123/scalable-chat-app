@@ -8,26 +8,30 @@ export const produceMessage = async (topic: string, message: any) => {
   });
 };
 
-
 export const consumeMessages = async (topic: string) => {
- 
+  
+  try {
     await consumer.connect();
 
     await consumer.subscribe({ topic: topic });
 
-  await consumer.run({ eachMessage: async ({ topic, partition, message }) => {
-      const data = JSON.parse(message?.value?.toString() ?? "");
-      console.log({
-        partition,
-        offset: message.offset,
-        value: data,
-      });
+    await consumer.run({
+      eachMessage: async ({ topic, partition, message }) => {
+        const data = JSON.parse(message?.value?.toString() ?? "");
+        console.log({
+          partition,
+          offset: message.offset,
+          value: data,
+        });
 
-      await prisma.chats.create({
-        data: data,
-      });
+        await prisma.chats.create({
+          data: data,
+        });
 
-      // Process the message (e.g., save to DB, trigger some action, etc.)
-    },
-  });
+        // Process the message (e.g., save to DB, trigger some action, etc.)
+      },
+    });
+  } catch (error) {
+    console.log("kafka consume error: -", error)
+  }
 };

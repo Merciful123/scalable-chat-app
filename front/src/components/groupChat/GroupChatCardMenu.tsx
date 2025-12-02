@@ -62,7 +62,7 @@ export default function GroupChatCardMenu({
         <DropdownMenuTrigger>
           <DotsVerticalIcon className="h-5 w-5" />
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className="cursor-pointer *:cursor-pointer">
           <DropdownMenuItem onClick={handleCopy}>Copy</DropdownMenuItem>
           <DropdownMenuItem onClick={() => setEditDialog(true)}>
             Edit

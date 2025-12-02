@@ -48,13 +48,20 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api", Routes);
 
+// redis log
+
+redis.on("connect", () => console.log("Redis OK"));
+redis.on("error", (err) => console.log("Redis ERR:", err));
 
 // added kafka from here
 
-connectKafkaProducer().catch((err) => console.log("Kafka Consumer error", err));
+connectKafkaProducer()
+  .then(() => console.log("Kafka producer OK"))
+  .catch((err) => console.log("Kafka producer ERR:", err));
 
-consumeMessages("quick-chat-messages").catch((err) => console.log("The Kafka Consume error", err)
-);
+consumeMessages("quick-chat-messages")
+  .then(() => console.log("Kafka consumer running"))
+  .catch((err) => console.log("Kafka consumer ERR:", err));
 
 server.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
 
