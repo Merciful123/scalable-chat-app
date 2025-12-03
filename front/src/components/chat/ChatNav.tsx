@@ -24,7 +24,7 @@ export default function ChatNav({
         </h1>
         {/* <p>{new Date(chatGroup.created_at).toDateString()}</p> */}
       </div>
-      <p className="rounded-md px-1.5 font-bold bg-linear-to-r from-pink-400 to-purple-600  ">{user?.name}Aamir yes</p>
+      <p className="rounded-md px-1.5 font-bold bg-linear-to-r from-pink-400 to-purple-600  ">{user?.name}</p>
     </nav>
   );
 }
