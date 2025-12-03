@@ -19,7 +19,7 @@ export default function MobileChatSidebar({
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <HamburgerMenuIcon />
+        <HamburgerMenuIcon className="mt-2 size-5"/>
       </SheetTrigger>
       <SheetContent side="left" className="bg-muted">
         <SheetHeader>
