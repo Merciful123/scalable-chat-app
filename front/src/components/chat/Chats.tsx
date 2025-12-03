@@ -74,14 +74,41 @@ export default function Chats({
           ))}
         </div>
       </div>
-      <form onSubmit={handleSubmit} className="mt-2 flex items-center">
-        <input
-          type="text"
+      <form onSubmit={handleSubmit} className="mt-2 flex items-center gap-2">
+      
+        <textarea
           placeholder="Type a message..."
           value={message}
-          className="flex-1 p-2 border border-gray-500 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 p-2 border border-gray-500 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 resize-none h-12"
           onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={(e) => {
+            // If only Enter is pressed -> prevent submit + prevent new line
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+            }
+          }}
         />
+
+        <button
+          // type="submit"
+          className="bg-linear-to-r from-pink-400 to-purple-600   px-2 py-2 rounded-md  hover:bg-blue-700 transition"
+        >
+          {/* Send Icon (Lucide) */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="22" y1="2" x2="11" y2="13" />
+            <polygon points="22 2 15 22 11 13 2 9 22 2" />
+          </svg>
+        </button>
       </form>
     </div>
   );

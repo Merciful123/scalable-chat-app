@@ -19,12 +19,12 @@ export default function ChatNav({
           <MobileChatSidebar users={users} />
         </div>
 
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-purple-600 text-transparent bg-clip-text">
+        <h1 className="text-2xl font-bold bg-linear-to-r from-pink-400 to-purple-600 text-transparent bg-clip-text">
           {chatGroup.title}
         </h1>
         {/* <p>{new Date(chatGroup.created_at).toDateString()}</p> */}
       </div>
-      <p>{user?.name}</p>
+      <p className="rounded-md px-1.5 font-bold bg-linear-to-r from-pink-400 to-purple-600  ">{user?.name}Aamir yes</p>
     </nav>
   );
 }
