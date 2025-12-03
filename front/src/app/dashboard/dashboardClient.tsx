@@ -30,7 +30,6 @@ export default function DashboardClient({
     groupsPromise.then((data) => setGroups(data));
   }, [groupsPromise]);
 
-  console.log(session)
 
   return (
      
@@ -38,7 +37,7 @@ export default function DashboardClient({
 
        {/*@ts-expect-error */}
       <DashNav name={session.name} image={session.image} />
-      <p className="mt-5 m-auto w-[90%] text-center text-xl bg-linear-to-r from-pink-400 to-purple-600 bg-clip-text text-transparent">Welcome to your dashboard. Manage your chat groups, conversations, and real-time activity all in one place.</p>
+      <p className="mt-10 m-auto w-[90%] text-center text-2xl font-bold">Welcome to your dashboard. Manage your chat groups, conversations, and real-time activity all in one place.</p>
 
       <div className="container m-auto w-[95%]">
         <div className="flex justify-end mt-10">

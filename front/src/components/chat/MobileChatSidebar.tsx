@@ -28,7 +28,7 @@ export default function MobileChatSidebar({
         <div>
           {users.length > 0 &&
             users.map((item, index) => (
-              <div key={index} className="bg-white rounded-md p-2 mt-2">
+              <div key={index} className="bg-white rounded-md p-2 max-md:mt-2">
                 <p className="font-bold"> {item.name}</p>
                 <p>
                   Joined :{" "}

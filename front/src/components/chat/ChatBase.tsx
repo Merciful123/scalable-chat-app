@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useMemo, Fragment } from "react";
+import { useState, useEffect } from "react";
 import ChatNav from "./ChatNav";
 import ChatUserDialog from "./ChatUserDialog";
 import ChatSidebar from "./ChatSidebar";
@@ -33,7 +33,7 @@ export default function ChatBase({
   return (
     <div className="flex">
       <ChatSidebar users={users} />
-      <div className="w-full md:w-4/5 bg-gradient-to-b from-gray-50 to-white">
+      <div className="w-full md:w-4/5 bg-linear-to-b from-gray-50 to-white">
         {open ? (
           <ChatUserDialog open={open} setOpen={setOpen} group={group} />
         ) : (

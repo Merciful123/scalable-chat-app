@@ -25,7 +25,7 @@ export const LoginModal = () => {
     <Dialog>
       <form>
         <DialogTrigger asChild>
-          <Button variant="outline"  className="cursor-pointer">Getting Started</Button>
+          <Button variant="outline"  className="cursor-pointer *:cursor-pointer">Getting Started</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
