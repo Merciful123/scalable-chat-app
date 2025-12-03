@@ -27,8 +27,8 @@ Designed to support group chats, real-time messaging, and distributed event proc
 
 * Render Web Service (Frontend)
 * Render Web Service (Backend)
-* Render Redis
-* Render Kafka / External Kafka cluster
+* Redis(from cloud redis)
+* Kafka (from redpanda)
 
 ---
 
@@ -40,7 +40,6 @@ Designed to support group chats, real-time messaging, and distributed event proc
 * Real-time chats using WebSockets
 * Kafka-based message queue for horizontal scaling
 * Redis Streams adapter to distribute WebSocket events
-* Fully containerized & deploy-ready
 
 ---
 
