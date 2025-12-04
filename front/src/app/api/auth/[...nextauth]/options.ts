@@ -46,11 +46,10 @@ export const authOptions: AuthOptions = {
      
       } catch (error) {
         if (error instanceof AxiosError) {
-           throw redirect(`/auth/error?message=${encodeURIComponent(error.message)}`);
-          
+          throw redirect(`/auth/error?message=${error.message}`);
         }
         // @ts-expect-error
-       throw redirect(`/auth/error?message=${error.message}`);
+        throw redirect(`${process.env.NEXT_PUBLIC_APP_URL}/auth/error?message=${error.message}`);
 
      }
     },

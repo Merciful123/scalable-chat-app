@@ -10,7 +10,8 @@ export default async function Dashboard() {
 
   return (
     <DashboardClient
-      session={session!.user!}
+     //@ts-expect-error
+      session={session.user}
       groupsPromise={groupsPromise}
     />
   );
