@@ -9,14 +9,14 @@ export default withAuth(
     const host = req.headers.get("host") || "";
     const proto = req.headers.get("x-forwarded-proto") || "";
 
-    const isLocalhost = host.startsWith("localhost") || host.startsWith("127.0.0.1");
+    const isLocalhost = host.includes("localhost") || host.includes("127.0.0.1");
 
     /**
      *  Force HTTPS ONLY on production (Render)
      * Localhost MUST remain HTTP, otherwise Chrome throws:
      * ERR_SSL_PROTOCOL_ERROR
      */
-    if (!isLocalhost && proto !== "https") {
+    if (!isLocalhost && proto !== "http") {
       url.protocol = "https:";
       return NextResponse.redirect(url);
     }
