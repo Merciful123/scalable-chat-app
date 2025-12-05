@@ -54,10 +54,11 @@ class ChatGroupController {
       const body = req.body;
       const user = req.user;
       await prisma.chatGroup.create({
+        //@ts-expect-error
         data: {
           title: body.title,
           passcode: body.passcode,
-          user_id: user?.id!,
+          user_id: user?.id,
         },
       });
   

@@ -22,17 +22,19 @@ export default function RootLayout({
   
   return (
     <html lang="en" suppressHydrationWarning>
-      <SessionProviders>
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
             fontSans.variable
           )}
         >
+      <SessionProviders>
+
           <Toaster richColors duration={10000}/>
           {children}
-        </body>
       </SessionProviders>
+
+        </body>
     </html>
   );
 }

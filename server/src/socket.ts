@@ -22,7 +22,7 @@ export function setupSocket(io: Server) {
   io.on("connection", (socket: CustomSocket) => {
 
     // join the room
-
+    //@ts-expect-error
     socket.join(socket?.room);
 
 

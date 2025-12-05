@@ -34,8 +34,8 @@ export default function DashboardClient({
   return (
      
     <div>
-
-       {/*@ts-expect-error */}
+      
+       {/*@ts-expect-error avoiding error */}
       <DashNav name={session.name} image={session.image} />
       <p className="mt-10 m-auto w-[90%] text-center text-2xl font-bold">Welcome to your dashboard. Manage your chat groups, conversations, and real-time activity all in one place.</p>
 

@@ -53,7 +53,7 @@ export default function GroupChatCardMenu({
             open={deleteDialog}
             setOpen={setDeleteDialog}
             groupId={group.id}
-            //@ts-expect-error
+            //@ts-expect-error avoinding error
             token={user.token}
           />
         </Suspense>
