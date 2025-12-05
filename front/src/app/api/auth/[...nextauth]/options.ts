@@ -20,44 +20,50 @@ export interface CustomUser {
 }
 
 export const authOptions: AuthOptions = {
-
   pages: {
     signIn: "/",
+    error: "/auth/error",
   },
-  
+
   callbacks: {
-  
-    async signIn({ user, account }:{user: CustomUser, account: Account|null }) {
-     try {
-      
-      
-      const payload = {
-        email: user.email,
-        name: user.name,
-        oauth_id: account!.providerAccountId,
-        provider: account!.provider,
-        image: user.image
-      }
+    async signIn({ user, account }) {
+      try {
+        if (!account) return false;
 
-      const {data} = await axios.post(LOGIN_URL, payload);
-      user.id = data.user.id.toString();
-      user.token = data.user.token;
-      return true;
-     
+        const oauthId =
+          account.providerAccountId ??
+          account.id ??
+          user?.id ??
+          null;
+
+        const payload = {
+          email: user?.email,
+          name: user?.name,
+          oauth_id: oauthId,
+          provider: account.provider,
+          image: user?.image,
+        };
+
+        const { data } = await axios.post(LOGIN_URL, payload);
+
+        user.id = data.user.id?.toString();
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-expect-error
+        user.token = data.user.token;
+
+        return true;
       } catch (error) {
-        if (error instanceof AxiosError) {
-          throw redirect(`/auth/error?message=${error.message}`);
-        }
-        // @ts-expect-error
-        throw redirect(`${process.env.NEXT_PUBLIC_APP_URL}/auth/error?message=${error.message}`);
-
-     }
+        return false; // NextAuth will redirect to pages.error
+      }
     },
-  
-    async session({ session, user, token } : {session: CustomSession, user: CustomUser, token: JWT}) {
-      session.user = token.user as CustomUser
+
+    async session({ session, token }) {
+      if (token?.user) {
+        session.user = token.user as CustomUser;
+      }
       return session;
     },
+
     async jwt({ token, user }) {
       if (user) {
         token.user = user;
@@ -65,10 +71,11 @@ export const authOptions: AuthOptions = {
       return token;
     },
   },
+
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
       authorization: {
         params: {
           prompt: "consent",

@@ -23,7 +23,7 @@ export function setupSocket(io: Server) {
 
     // join the room
 
-    socket.join(socket?.room!);
+    socket.join(socket?.room);
 
 
     socket.on("message", async (data)=>{
@@ -35,8 +35,8 @@ export function setupSocket(io: Server) {
       // commented above to add data from kafka
 
       await produceMessage(process.env.KAFKA_TOPIC as string, data)
-
-      socket.to(socket.room!).emit("message", data)
+      //@ts-expect-error
+      socket.to(socket.room).emit("message", data)
       
     })
          

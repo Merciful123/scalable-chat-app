@@ -3,12 +3,14 @@ import env from "dotenv";
 env.config();
 
 const kafka = new Kafka({
-  brokers: [process.env.KAFKA_BROKER!],
+  //@ts-expect-error
+  brokers: [process.env.KAFKA_BROKER],
   ssl: true,
+  //@ts-expect-error
   sasl: {
     mechanism: "scram-sha-256",
-    username: process.env.KAFKA_USERNAME!,
-    password: process.env.KAFKA_PASSWORD!,
+    username: process.env.KAFKA_USERNAME,
+    password: process.env.KAFKA_PASSWORD,
   },
   logLevel: logLevel.ERROR,
 });
