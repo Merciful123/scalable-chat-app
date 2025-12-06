@@ -1,6 +1,7 @@
 import { LOGIN_URL } from "@/lib/apiEndPoints";
 import axios from "axios";
-import {  AuthOptions, ISODateString } from "next-auth";
+import {  Account, AuthOptions, ISODateString, User } from "next-auth";
+import { JWT } from "next-auth/jwt";
 import GoogleProvider from "next-auth/providers/google";
 
 export interface CustomSession {
@@ -33,7 +34,10 @@ export const authOptions: AuthOptions = {
     error: "/auth/error",
   },
   callbacks: {
-    async signIn({ user, account }) {
+    async signIn({ user, account }: {
+      user: CustomUser;
+      account: Account | null;
+    }) {
       try {
         console.log("SignIn callback triggered");
         
@@ -60,9 +64,8 @@ export const authOptions: AuthOptions = {
 
         const { data } = await axios.post(LOGIN_URL, payload);
         
-        user.id = data.user.id?.toString();
-        // @ts-expect-error - Adding custom token property
-        user.token = data.user.token;
+        user.id = data?.user?.id?.toString();
+        user.token = data?.user?.token;
         
         console.log("Backend authentication successful");
         return true;
@@ -79,7 +82,11 @@ export const authOptions: AuthOptions = {
         return false;
       }
     },
-    async session({ session, token }) {
+    async session({ session, token, user }:{
+      session: CustomSession;
+      token: JWT;
+      user: User;
+    }) {
       if (token?.user) {
         session.user = token.user as CustomUser;
       }
