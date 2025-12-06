@@ -94,8 +94,10 @@ export const authOptions: AuthOptions = {
   },
   providers: [
     GoogleProvider({
-      clientId: GOOGLE_CLIENT_ID!,
-      clientSecret: GOOGLE_CLIENT_SECRET!,
+      //@ts-expect-error avoiding ts error
+      clientId: GOOGLE_CLIENT_ID,
+      //@ts-expect-error avoiding ts error
+      clientSecret: GOOGLE_CLIENT_SECRET,
       authorization: {
         params: {
           prompt: "consent",
