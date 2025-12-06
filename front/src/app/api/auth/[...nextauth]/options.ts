@@ -62,7 +62,9 @@ export const authOptions: AuthOptions = {
 
         console.log("Sending payload to backend:", { ...payload, oauth_id: "***" });
 
+        console.log(LOGIN_URL)
         const { data } = await axios.post(LOGIN_URL, payload);
+        console.log(data)
         
         user.id = data?.user?.id?.toString();
         user.token = data?.user?.token;
