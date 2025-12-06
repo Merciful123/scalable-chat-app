@@ -5,12 +5,13 @@ import { fetchChatGroups } from "../fetch/groupFetch";
 
 export default async function Dashboard() {
   const session = await getServerSession(authOptions);
-  //@ts-expect-error
+  console.log(session)
+  //@ts-expect-error avoiding type error
   const groupsPromise = fetchChatGroups(session.user.token);
 
   return (
     <DashboardClient
-     //@ts-expect-error
+     //@ts-expect-error avoiding type error
       session={session.user}
       groupsPromise={groupsPromise}
     />

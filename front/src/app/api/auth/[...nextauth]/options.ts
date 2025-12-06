@@ -1,9 +1,7 @@
 import { LOGIN_URL } from "@/lib/apiEndPoints";
-import axios, { AxiosError } from "axios";
-import { Account, AuthOptions, ISODateString } from "next-auth";
-import { JWT } from "next-auth/jwt";
+import axios from "axios";
+import {  AuthOptions, ISODateString } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { redirect } from "next/navigation";
 
 export interface CustomSession {
   user?: CustomUser;
@@ -19,16 +17,30 @@ export interface CustomUser {
   token?: string | null;
 }
 
+// Validate environment variables
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+
+if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET) {
+  console.error("Missing Google OAuth credentials");
+  console.log("GOOGLE_CLIENT_ID:", GOOGLE_CLIENT_ID ? "Present" : "Missing");
+  console.log("GOOGLE_CLIENT_SECRET:", GOOGLE_CLIENT_SECRET ? "Present" : "Missing");
+}
+
 export const authOptions: AuthOptions = {
   pages: {
     signIn: "/",
     error: "/auth/error",
   },
-
   callbacks: {
     async signIn({ user, account }) {
       try {
-        if (!account) return false;
+        console.log("SignIn callback triggered");
+        
+        if (!account) {
+          console.error("No account object received");
+          return false;
+        }
 
         const oauthId =
           account.providerAccountId ??
@@ -44,26 +56,35 @@ export const authOptions: AuthOptions = {
           image: user?.image,
         };
 
+        console.log("Sending payload to backend:", { ...payload, oauth_id: "***" });
+
         const { data } = await axios.post(LOGIN_URL, payload);
-
+        
         user.id = data.user.id?.toString();
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-expect-error
+        // @ts-expect-error - Adding custom token property
         user.token = data.user.token;
-
+        
+        console.log("Backend authentication successful");
         return true;
       } catch (error) {
-        return false; // NextAuth will redirect to pages.error
+        if (axios.isAxiosError(error)) {
+          console.error("Backend authentication failed:", {
+            status: error.response?.status,
+            data: error.response?.data,
+            message: error.message,
+          });
+        } else {
+          console.error("Unexpected error during signIn:", error);
+        }
+        return false;
       }
     },
-
     async session({ session, token }) {
       if (token?.user) {
         session.user = token.user as CustomUser;
       }
       return session;
     },
-
     async jwt({ token, user }) {
       if (user) {
         token.user = user;
@@ -71,11 +92,10 @@ export const authOptions: AuthOptions = {
       return token;
     },
   },
-
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      clientId: GOOGLE_CLIENT_ID!,
+      clientSecret: GOOGLE_CLIENT_SECRET!,
       authorization: {
         params: {
           prompt: "consent",
